@@ -10,6 +10,7 @@ pushd $tmp_dir
 cargo new external-ci
 pushd external-ci
 cargo add anchor-lang
+cargo b
 popd
 popd
 
