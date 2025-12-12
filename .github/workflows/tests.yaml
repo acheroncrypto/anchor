@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - lang-remove-3-lifetime-definitions-from-context-ci
     paths-ignore:
       - "docs/**"
   pull_request:
