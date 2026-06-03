@@ -16,7 +16,7 @@ export default class NodeWallet implements Wallet {
   static local(): NodeWallet | never {
     const process = require("process");
 
-    if (!process.env.ANCHOR_WALLET || process.env.ANCHOR_WALLET === "") {
+    if (!process.env.ANCHOR_WALLET) {
       throw new Error(
         "expected environment variable `ANCHOR_WALLET` is not set."
       );
