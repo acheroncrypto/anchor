@@ -13,7 +13,7 @@ import { isVersionedTransaction } from "./utils/common.js";
 export default class NodeWallet implements Wallet {
   constructor(readonly payer: Keypair) {}
 
-  static local(): NodeWallet | never {
+  static local(): NodeWallet {
     const process = require("process");
 
     if (!process.env.ANCHOR_WALLET) {
