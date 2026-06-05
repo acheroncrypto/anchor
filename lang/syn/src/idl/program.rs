@@ -10,8 +10,7 @@ use {
     heck::CamelCase,
     proc_macro2::TokenStream,
     quote::{format_ident, quote},
-    syn::spanned::Spanned,
-    syn::Result,
+    syn::{spanned::Spanned, Result},
 };
 
 /// Generate the IDL build print function for the program module.
