@@ -484,8 +484,8 @@ fn generate_constraint_realloc(
                 }
             } else {
                 let __lamport_amt = __field_info.lamports().checked_sub(__new_rent_minimum).unwrap();
-                **#payer.to_account_info().lamports.borrow_mut() = #payer.to_account_info().lamports().checked_add(__lamport_amt).unwrap();
-                **__field_info.lamports.borrow_mut() = __field_info.lamports().checked_sub(__lamport_amt).unwrap();
+                anchor_lang::Lamports::add_lamports(&#payer, __lamport_amt)?;
+                anchor_lang::Lamports::sub_lamports(&__field_info, __lamport_amt)?;
             }
 
             __field_info.resize(#new_space)?;
