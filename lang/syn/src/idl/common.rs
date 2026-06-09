@@ -26,7 +26,7 @@ pub fn get_no_docs() -> bool {
 pub fn get_program_path() -> Result<PathBuf> {
     std::env::var("ANCHOR_IDL_BUILD_PROGRAM_PATH")
         .map(PathBuf::from)
-        .map_err(|_| format!("Failed to get program path").into())
+        .map_err(|e| format!("Failed to get program path: {e}").into())
 }
 
 pub fn get_idl_module_path() -> TokenStream {
