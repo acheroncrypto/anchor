@@ -442,11 +442,16 @@
   "errors": [
     {
       "code": 6000,
-      "name": "MyNormalError"
+      "name": "Default"
     },
     {
       "code": 6500,
-      "name": "MyErrorWithSpecialOffset"
+      "name": "WithOffset"
+    },
+    {
+      "code": 6501,
+      "name": "WithMsg",
+      "msg": "Custom msg"
     }
   ],
   "types": [

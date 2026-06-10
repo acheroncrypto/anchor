@@ -135,11 +135,11 @@ pub mod external {
 }
 
 #[error_code]
-pub enum ExternalProgramError {
-    // Should have offset 6000
-    MyNormalError,
-    // Should have offset 6500
-    MyErrorWithSpecialOffset = 500,
+pub enum ExternalError {
+    Default,
+    WithOffset = 500,
+    #[msg("Custom msg")]
+    WithMsg,
 }
 
 #[derive(Accounts)]
