@@ -33,6 +33,7 @@ The minor version will be incremented upon a breaking change and the patch versi
 
 - lang: Shorten invariant lifetimes during `Context` creation ([#4363](https://github.com/solana-foundation/anchor/pull/4363)).
 - ts: Guard recursive IDL layouts against stack overflows while preserving supported recursive types ([#4604](https://github.com/solana-foundation/anchor/pull/4604)).
+- lang: Fix missing error messages of the generated errors in `declare_program!` ([#4652](https://github.com/solana-foundation/anchor/pull/4652)).
 - idl: Bump version to 0.1.3 ([#4453](https://github.com/solana-foundation/anchor/pull/4453)).
 - lang: Migrate `anchor-syn` from syn 1.x to syn 2.0, allowing use of modern Rust syntax ([#4523](https://github.com/solana-foundation/anchor/issues/4523)).
 - lang: Avoid fatal errors in IDL building when modern Rust syntax is in use ([#4520](https://github.com/solana-foundation/anchor/pull/4520)).
