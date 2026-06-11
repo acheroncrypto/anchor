@@ -27,6 +27,7 @@ The minor version will be incremented upon a breaking change and the patch versi
 - cli: Support multiple named scripts in `Anchor.toml` and run them via `anchor test --script <name>` / `anchor run <name>` ([#3999](https://github.com/solana-foundation/anchor/pull/3999)).
 - cli/idl: Add `fetch-historical` support to recover historical IDLs with the Anchor CLI ([#3992](https://github.com/solana-foundation/anchor/pull/3992)).
 - cli: `anchor init` refuses to create a new Anchor workspace inside an existing Cargo workspace to avoid broken nested layouts ([#4576](https://github.com/solana-foundation/anchor/pull/4576)).
+- cli: Add `r` as an alias to the `run` command ([#4643](https://github.com/solana-foundation/anchor/pull/4643)).
 
 ### Fixes
 
@@ -47,6 +48,8 @@ The minor version will be incremented upon a breaking change and the patch versi
 - ts: Align TS `camelCase` conversion with Rust `heck` for digit-letter identifiers so generated client names match Rust identifiers ([#4571](https://github.com/solana-foundation/anchor/pull/4571)).
 - cli: Warn if `event-cpi` instruction is unreachable with custom discriminators ([#4614](https://github.com/solana-foundation/anchor/pull/4614)).
 - lang: Reduce cloning in `realloc` constraint when shrinking ([#4642](https://github.com/solana-foundation/anchor/pull/4642)).
+- syn: Remove `anyhow` ([#4640](https://github.com/solana-foundation/anchor/pull/4640)).
+- ts: Update `engines.node` to `>= 20.18` ([#4647](https://github.com/solana-foundation/anchor/pull/4647)).
 
 ### Breaking
 
