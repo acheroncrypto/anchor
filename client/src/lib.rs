@@ -520,8 +520,6 @@ pub enum ClientError {
     IOError(#[from] std::io::Error),
     #[error("{0}")]
     SignerError(#[from] SignerError),
-    #[error("Expected a legacy transaction but got a versioned transaction")]
-    NotLegacyTransaction,
 }
 
 pub trait AsSigner {
