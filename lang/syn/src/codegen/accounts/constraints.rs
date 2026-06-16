@@ -1196,7 +1196,7 @@ fn generate_constraint_init_group(
 
                         {
                             let required_lamports = __anchor_rent.minimum_balance(space);
-                            if anchor_lang::Lamports::get_lamports(&pa) < required_lamports {
+                            if anchor_lang::Lamports::get_lamports(actual_field) < required_lamports {
                                 return Err(anchor_lang::error::Error::from(anchor_lang::error::ErrorCode::ConstraintRentExempt).with_account_name(#name_str));
                             }
                         }
