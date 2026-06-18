@@ -60,18 +60,6 @@ Solana version: 2.3.0
 
 ---
 
-## [v1.0.0-rc.3]
-
-Solana version: 2.3.0
-
-| Program | Binary Size | -                        |
-| ------- | ----------- | ------------------------ |
-| bench   | 932,992     | 🟢 **-193,848 (17.20%)** |
-
-### Notable changes
-
----
-
 ## [0.32.1]
 
 Solana version: 2.3.0
