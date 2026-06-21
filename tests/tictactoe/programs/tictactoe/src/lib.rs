@@ -73,7 +73,7 @@ pub struct Initialize<'info> {
 #[derive(Accounts)]
 pub struct PlayerJoin<'info> {
     player_o: Signer<'info>,
-    #[account(mut, constraint = game.game_state != 0 && game.player_x != Pubkey::default())]
+    #[account(mut, constraint = game.game_state == 0 && game.player_x != Pubkey::default())]
     game: Account<'info, Game>,
 }
 
