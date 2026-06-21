@@ -14,7 +14,6 @@ describe("tictactoe", () => {
       accounts: {
         authority: playerX.publicKey,
         dashboard: dashboard.publicKey,
-        rent: anchor.web3.SYSVAR_RENT_PUBKEY,
       },
       signers: [dashboard],
       instructions: [
@@ -30,7 +29,6 @@ describe("tictactoe", () => {
         playerX: playerX.publicKey,
         dashboard: dashboard.publicKey,
         game: game.publicKey,
-        rent: anchor.web3.SYSVAR_RENT_PUBKEY,
       },
       signers: [game],
       instructions: [await program.account.game.createInstruction(game)],
