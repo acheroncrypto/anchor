@@ -29,6 +29,7 @@ The minor version will be incremented upon a breaking change and the patch versi
 - cli: `anchor init` refuses to create a new Anchor workspace inside an existing Cargo workspace to avoid broken nested layouts ([#4576](https://github.com/solana-foundation/anchor/pull/4576)).
 - cli: Add `r` as an alias to the `run` command ([#4643](https://github.com/solana-foundation/anchor/pull/4643)).
 - lang: Provide better error messages for `token` constraints ([#4698](https://github.com/solana-foundation/anchor/pull/4698)).
+- ts: Improve account resolution error of self-referencing PDAs ([#4711](https://github.com/solana-foundation/anchor/pull/4711)).
 
 ### Fixes
 
