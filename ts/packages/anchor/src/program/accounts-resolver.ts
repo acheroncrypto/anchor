@@ -86,23 +86,59 @@ export class AccountsResolver<IDL extends Idl> {
     ) {
       depth++;
       if (depth === 16) {
+        // Self-referencing PDAs are not resolvable. Checking them here instead
+        // of at the top of this function because it's an unlikely case.
+        const selfRefPdas = this._idlIx.accounts.filter(
+          this.isSelfReferencingPda.bind(this)
+        );
+        const unresolvedSelfRefPdas = this.getUnresolvedAccounts(selfRefPdas);
+        if (unresolvedSelfRefPdas.length) {
+          throw new Error(
+            [
+              "Self-referencing PDAs must be provided manually.",
+              `Unresolved PDAs: ${this.formatAccountPaths(
+                unresolvedSelfRefPdas
+              )}`,
+            ].join(" ")
+          );
+        }
+
         const resolvableAccs = this._idlIx.accounts.filter(
           this.isResolvable.bind(this)
         );
-        const unresolvedAccs = this.getPaths(resolvableAccs)
-          .filter((path) => !this.get(path))
-          .map((path) => path.reduce((acc, p) => acc + "." + p))
-          .map((acc) => `\`${acc}\``)
-          .join(", ");
-
+        const unresolvedAccs = this.getUnresolvedAccounts(resolvableAccs);
         throw new Error(
           [
             `Reached maximum depth for account resolution.`,
-            `Unresolved accounts: ${unresolvedAccs}`,
+            `Unresolved accounts: ${this.formatAccountPaths(unresolvedAccs)}`,
           ].join(" ")
         );
       }
     }
+  }
+
+  private getUnresolvedAccounts(accs: IdlInstructionAccountItem[]) {
+    return this.getPaths(accs).filter((path) => !this.get(path));
+  }
+
+  private formatAccountPaths(paths: string[][]): string {
+    return paths
+      .map((path) => path.reduce((acc, p) => acc + "." + p))
+      .map((acc) => `\`${acc}\``)
+      .join(", ");
+  }
+
+  private isSelfReferencingPda(acc: IdlInstructionAccountItem): boolean {
+    if (!isCompositeAccounts(acc)) {
+      if (!acc.pda) return false;
+      return acc.pda.seeds.some((seed) => {
+        if (seed.kind !== "account") return false;
+        const [name] = seed.path.split(".");
+        return name === acc.name;
+      });
+    }
+
+    return acc.accounts.some(this.isSelfReferencingPda.bind(this));
   }
 
   private isResolvable(acc: IdlInstructionAccountItem): boolean {
