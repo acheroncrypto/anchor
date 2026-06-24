@@ -28,9 +28,12 @@ The minor version will be incremented upon a breaking change and the patch versi
 - cli/idl: Add `fetch-historical` support to recover historical IDLs with the Anchor CLI ([#3992](https://github.com/solana-foundation/anchor/pull/3992)).
 - cli: `anchor init` refuses to create a new Anchor workspace inside an existing Cargo workspace to avoid broken nested layouts ([#4576](https://github.com/solana-foundation/anchor/pull/4576)).
 - cli: Add `r` as an alias to the `run` command ([#4643](https://github.com/solana-foundation/anchor/pull/4643)).
+- lang: Provide better error messages for `token` constraints ([#4698](https://github.com/solana-foundation/anchor/pull/4698)).
 
 ### Fixes
 
+- lang: Remove cloning `AccountInfo` to read lamports in `init_if_needed` codegen ([#4675](https://github.com/solana-foundation/anchor/pull/4675)).
+- ts: Remove `cross-fetch` dependency ([#4671](https://github.com/solana-foundation/anchor/pull/4671)).
 - lang: Guard `AccountLoader<T>::exit` against zero-copy buffer truncation and bail with `AccountDidNotDeserialize` instead of rewriting the discriminator over an undersized buffer ([#4633](https://github.com/otter-sec/anchor/pull/4633)).
 - lang: Set `anchor-lang` Minimum Supported Rust Version to `1.89` ([#4638](https://github.com/otter-sec/anchor/pull/4638)).
 - lang: Shorten invariant lifetimes during `Context` creation ([#4363](https://github.com/solana-foundation/anchor/pull/4363)).
@@ -40,6 +43,7 @@ The minor version will be incremented upon a breaking change and the patch versi
 - idl: Bump version to 0.1.3 ([#4453](https://github.com/solana-foundation/anchor/pull/4453)).
 - lang: Migrate `anchor-syn` from syn 1.x to syn 2.0, allowing use of modern Rust syntax ([#4523](https://github.com/solana-foundation/anchor/issues/4523)).
 - lang: Avoid fatal errors in IDL building when modern Rust syntax is in use ([#4520](https://github.com/solana-foundation/anchor/pull/4520)).
+- lang: Return `InvalidProgramId` when `Migration::exit` cannot persist migrated state because `To::owner()` does not match `program_id` ([#4622](https://github.com/otter-sec/anchor/pull/4622)).
 - client: Avoid panic in `parse_logs_response` when a program-emitted log line ends with `invoke [1]` ([#4461](https://github.com/solana-foundation/anchor/issues/4461)).
 - cli: Correctly honor `--skip-seed-phrase-validation` in `keygen recover` ([#4417](https://github.com/solana-foundation/anchor/pull/4417)).
 - spl: Fix wrong owner pubkey in CPI Guard enable/disable ([#4322](https://github.com/solana-foundation/anchor/pull/4322)).
@@ -54,6 +58,7 @@ The minor version will be incremented upon a breaking change and the patch versi
 - lang: Reduce cloning in `realloc` constraint when shrinking ([#4642](https://github.com/solana-foundation/anchor/pull/4642)).
 - syn: Remove `anyhow` ([#4640](https://github.com/solana-foundation/anchor/pull/4640)).
 - ts: Update `engines.node` to `>= 20.18` ([#4647](https://github.com/solana-foundation/anchor/pull/4647)).
+- lang: Sync type derives and simplify internal args creation in `declare_program!` ([#4667](https://github.com/solana-foundation/anchor/pull/4667)).
 
 ### Breaking
 
