@@ -12,6 +12,7 @@ The minor version will be incremented upon a breaking change and the patch versi
 
 ### Features
 
+- lang: Always derive `Clone` and `Debug` for generated types in `declare_program!` ([#4723](https://github.com/solana-foundation/anchor/pull/4723)).
 - ts: Re-implement `verifiedBuild` using the OtterSec registry (`verify.osec.io`), replacing the defunct `apr.dev` API ([#4522](https://github.com/solana-foundation/anchor/pull/4522)).
 - ts: Add `decodeIdlAccountRaw` ([#4375](https://github.com/solana-foundation/anchor/pull/4375)).
 - cli: Add `--stdout` flag to the `expand` command ([#4400](https://github.com/solana-foundation/anchor/pull/4400)).
