@@ -156,7 +156,7 @@ pub fn convert_idl_type_def_to_ts(
     };
 
     let attrs = {
-        let debug_attr = can_derive_debug(ty_def, ty_defs).then_some(quote!(#[derive(Debug)]));
+        let debug_attr = quote!(#[derive(Debug)]);
         let default_attr =
             can_derive_default(ty_def, ty_defs).then_some(quote!(#[derive(Default)]));
 
@@ -175,8 +175,7 @@ pub fn convert_idl_type_def_to_ts(
         };
 
         let clone_attr = matches!(ty_def.serialization, IdlSerialization::Borsh)
-            .then(|| can_derive_clone(ty_def, ty_defs).then_some(quote!(#[derive(Clone)])))
-            .flatten()
+            .then(|| quote!(#[derive(Clone)]))
             .unwrap_or_default();
 
         let copy_attr = matches!(ty_def.serialization, IdlSerialization::Borsh)
